@@ -5,6 +5,56 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">EEMUA 191 Revision 3</h1>
+    <p>Enter values to test zone.</p>
+
+    <form id="EEMUA191Rev3">
+        <div class="mb-3">
+            <label for="alarmRate" class="form-label">Average Alarm Rate (X)</label>
+            <input type="number" class="form-control" id="alarmRate" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="pctTime" class="form-label">Percentage of time spend outside the avereage target (Y)</label>
+            <input type="number" class="form-control" id="pctTime">
+        </div>
+        <button type="submit" class="btn btn-primary">Test Values</button>
+    </form>
+
+    <div id="result" class="alert mt-5"></div>
+
+    <script>
+        let form = document.getElementById("EEMUA191Rev3");
+        form.onsubmit = function(evt){
+            let x = document.getElementById("alarmRate").value;
+            let y = document.getElementById("pctTime").value;
+            let display = document.getElementById("result");
+            //let zone;
+
+            evt.preventDefault();
+            console.log(evt);
+            const path = `/api/GetZoneForPoint?x=${x}&y=${y}`;
+            fetch(path).then(res => res.text()).then(zone => {
+
+                display.innerText = zone;
+
+                switch (zone) {
+                    case 'Robust':
+                        display.style.backgroundColor = 'green';
+                        break;
+                    case 'Stable':
+                        display.style.backgroundColor = 'lightgreen';
+                        break;
+                    case 'Reactive':
+                        display.style.backgroundColor = 'yellow';
+                        break;
+                    case 'Overloaded':
+                        display.style.backgroundColor = 'red';
+                        break;
+                    default:
+                        display.style.backgroundColor = 'lightgray';
+                }
+            });
+        }
+
+    </script>
 </div>

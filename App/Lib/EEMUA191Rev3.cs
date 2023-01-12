@@ -31,7 +31,7 @@ namespace App.Lib {
 
         private static bool IsRobust(double x, double y){
             return x <= 1 
-                && y <= 15 - 15 * y;
+                && y <= 25 - 15 * x;
         }
 
         private static bool IsStable(double x, double y){

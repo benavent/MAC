@@ -20,6 +20,7 @@ public class TestEEMUA191Rev3
     [DataRow(0,25)]
     [DataRow(0.5, 11)]
     [DataRow(0.5, 17.5 )]
+    [DataRow(1,1)]
     public void TestGetZoneForPointsRobust(double x, double y)
     {
         Assert.AreEqual( EEMUA191Rev3.GetZoneForPoint(0,0), EEMUA191Rev3.StateNames.Robust);
