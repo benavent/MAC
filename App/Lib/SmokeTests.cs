@@ -1,7 +1,7 @@
 namespace App {
-    public class Lib
+    public class SmokeTests
     {
-        public static bool SmokeTest(){
+        public static bool Test(){
             return true;
         }
     }

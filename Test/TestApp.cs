@@ -3,11 +3,11 @@ using App;
 namespace Test;
 
 [TestClass]
-public class UnitTestApp
+public class TestApp
 {
     [TestMethod]
     public void AppLoads()
     {
-        Assert.IsTrue(Lib.SmokeTest());
+        Assert.IsTrue(SmokeTests.Test());
     }
 }
